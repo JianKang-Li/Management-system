@@ -2,7 +2,7 @@
   <div class="item" @mouseenter="enter" @mouseleave="leave">
     <a-tooltip placement="topLeft" :title="content.toString()">
       <a-checkbox v-model:checked="done" class="text">
-        <span>
+        <span :class="done ? 'done' : ''">
           {{
             content.length > 20 ? content.slice(0, 20) + "..." : content
           }}</span
@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useTodoStore } from "@/stores/lists";
 import { message } from "ant-design-vue";
 export default {
@@ -41,6 +41,10 @@ export default {
       todoStore.deleteItem(props.data.id);
       message.success("删除成功!");
     };
+
+    watch(done, (newValue) => {
+      todoStore.updateItem(props.data.id, newValue);
+    });
     return {
       content,
       done,
@@ -64,5 +68,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.done {
+  text-decoration-line: line-through;
+  font-style: italic;
 }
 </style>

@@ -1,14 +1,21 @@
 <template>
   <div class="todo">
-    <h2>Todos</h2>
+    <h2>待办事项</h2>
     <a-input
       class="input"
       v-model:value="thing"
-      placeholder="Press enter to add to todo"
+      placeholder="输入结束后按下Enter添加事项"
       @keyup="handleKeyUp"
     />
     <div class="lists">
       <Item v-for="item in lists" :key="item.id" :data="item" />
+    </div>
+    <div class="footer">
+      <span
+        >剩余{{
+          lists.filter((item) => item.done === false).length
+        }}件待办事项</span
+      >
     </div>
   </div>
 </template>

@@ -14,6 +14,13 @@ export const useTodoStore = defineStore("lists", {
       this.lists = this.lists.filter((ele) => {
         return ele.id !== id;
       });
+    },
+    updateItem(id, status) {
+      this.lists.forEach((ele) => {
+        if (ele.id === id) {
+          ele.done = status
+        }
+      })
     }
   },
   persist: {
