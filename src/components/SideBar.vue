@@ -1,45 +1,48 @@
 <template>
-  <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+  <a-layout-sider :collapsed="collapsed" :trigger="null" collapsible>
     <div class="bar">
       <a-button
-        type="primary"
-        style="margin-bottom: 16px"
+        type="text"
+        style="color: white; text-align: left; margin-left: 1rem"
         @click="toggleCollapsed"
       >
         <MenuUnfoldOutlined v-if="collapsed" />
         <MenuFoldOutlined v-else />
       </a-button>
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        mode="inline"
-        theme="dark"
-        :open-keys="openKeys"
-        @openChange="onOpenChange"
-      >
-        <a-menu-item>
+      <a-menu mode="inline" theme="dark" v-model:selectedKeys="selectedKeys">
+        <a-menu-item key="overview">
+          <template #icon>
+            <radar-chart-outlined />
+          </template>
+          <router-link to="/home/overview">情况总览</router-link>
+        </a-menu-item>
+        <a-menu-item key="github">
           <template #icon>
             <github-outlined />
           </template>
-          <a-anchor-link
-            href="#components-anchor-demo-basic"
-            title="GitHub首页"
+          <a
+            href="https://github.com/JianKang-Li/Management-system"
+            target="_blank"
           >
-          </a-anchor-link>
+            GitHub首页
+          </a>
         </a-menu-item>
         <a-sub-menu key="sub1">
-          <template #title>1</template>
+          <template #icon>
+            <unordered-list-outlined />
+          </template>
+          <template #title>含子菜单</template>
           <a-menu-item key="1">Option 1</a-menu-item>
           <a-menu-item key="2">Option 2</a-menu-item>
           <a-menu-item key="3">Option 3</a-menu-item>
           <a-menu-item key="4">Option 4</a-menu-item>
         </a-sub-menu>
-        <a-sub-menu key="sub2">
-          <template #title>二</template>
-          <a-menu-item key="1">Option 1</a-menu-item>
-          <a-menu-item key="2">Option 2</a-menu-item>
-          <a-menu-item key="3">Option 3</a-menu-item>
-          <a-menu-item key="4">Option 4</a-menu-item>
-        </a-sub-menu>
+        <a-menu-item key="todo"
+          ><template #icon>
+            <carry-out-outlined />
+          </template>
+          <router-link to="/home/todo">Todos</router-link>
+        </a-menu-item>
       </a-menu>
     </div>
   </a-layout-sider>
@@ -50,34 +53,32 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   GithubOutlined,
+  RadarChartOutlined,
+  UnorderedListOutlined,
+  CarryOutOutlined,
 } from "@ant-design/icons-vue";
 export default {
-  components: { MenuFoldOutlined, MenuUnfoldOutlined, GithubOutlined },
+  components: {
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    GithubOutlined,
+    RadarChartOutlined,
+    UnorderedListOutlined,
+    CarryOutOutlined,
+  },
   setup() {
     const state = reactive({
-      rootSubmenuKeys: ["sub1", "sub2"],
-      openKeys: [],
+      rootSubmenuKeys: ["sub1"],
       selectedKeys: [],
       collapsed: true,
     });
 
-    const onOpenChange = (openKeys) => {
-      const latestOpenKey = openKeys.find(
-        (key) => state.openKeys.indexOf(key) === -1
-      );
-
-      if (state.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-        state.openKeys = openKeys;
-      } else {
-        state.openKeys = latestOpenKey ? [latestOpenKey] : [];
-      }
-    };
     const toggleCollapsed = () => {
       state.collapsed = !state.collapsed;
       state.openKeys = state.collapsed ? [] : state.preOpenKeys;
     };
 
-    return { ...toRefs(state), onOpenChange, toggleCollapsed };
+    return { ...toRefs(state), toggleCollapsed };
   },
 };
 </script>
@@ -96,11 +97,22 @@ export default {
 .bar::-webkit-scrollbar-track {
   border-radius: 1rem;
   background: #eee;
+  width: 0.1rem;
 }
 
 /* 滚动条滑块 */
 .bar::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: rgba(136, 136, 136, 0.8);
+}
+
+:deep(.ant-anchor-link-title:hover) {
+  color: white;
+  display: inline;
+}
+
+.ant-layout-sider {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 </style>

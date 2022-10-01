@@ -34,6 +34,7 @@
 import { userStateStore } from "../stores/state";
 import { reactive, computed } from "vue";
 import { useRouter } from "vue-router";
+import { notification } from "ant-design-vue";
 const formState = reactive({
   username: "",
   password: "",
@@ -44,6 +45,10 @@ const onFinish = (values) => {
   stateStore.$patch((state) => {
     state.isLogin = true;
     state.username = values.username;
+  });
+  notification["success"]({
+    message: "成功",
+    description: "登录成功!",
   });
   router.push("/home");
 };
