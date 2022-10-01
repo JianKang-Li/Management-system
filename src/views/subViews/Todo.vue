@@ -31,15 +31,13 @@ export default {
         if (content === "") {
           message.error("输入内容为空!");
         } else {
-          TodoStore.$patch((state) => {
-            let item = {
-              content,
-              done: false,
-              id: nanoid(),
-            };
-            state.lists.push(item);
-            message.success("添加成功!");
-          });
+          let item = {
+            content,
+            done: false,
+            id: nanoid(),
+          };
+          TodoStore.addItem(item);
+          message.success("添加成功!");
         }
       }
     };

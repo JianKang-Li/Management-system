@@ -7,6 +7,12 @@ export const userStateStore = defineStore("state", {
       username: ""
     }
   },
+  actions: {
+    clear() {
+      this.isLogin = false;
+      this.username = ''
+    },
+  },
   persist: {
     //这里存储默认使用的是session
     enabled: true,

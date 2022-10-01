@@ -22,10 +22,7 @@ const state = userStateStore();
 const { isLogin } = storeToRefs(state);
 const router = useRouter();
 const loginOut = () => {
-  state.$patch((state) => {
-    state.isLogin = false;
-    state.username = "";
-  });
+  state.clear();
   router.push("/Login");
 };
 </script>

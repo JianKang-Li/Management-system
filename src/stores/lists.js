@@ -6,6 +6,16 @@ export const useTodoStore = defineStore("lists", {
       lists: [{ id: "1", content: "axios通信", done: false }, { id: "2", content: '增加表单', done: false }, { id: "3", content: '增加表格', done: false }]
     }
   },
+  actions: {
+    addItem(item) {
+      this.lists.push(item)
+    },
+    deleteItem(id) {
+      this.lists = this.lists.filter((ele) => {
+        return ele.id !== id;
+      });
+    }
+  },
   persist: {
     //这里存储默认使用的是session
     enabled: true,

@@ -38,11 +38,7 @@ export default {
     const done = ref(props.data.done);
 
     const deleteItem = () => {
-      todoStore.$patch((state) => {
-        state.lists = state.lists.filter((ele) => {
-          return ele.id != props.data.id;
-        });
-      });
+      todoStore.deleteItem(props.data.id);
       message.success("删除成功!");
     };
     return {
