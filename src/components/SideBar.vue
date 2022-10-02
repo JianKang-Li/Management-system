@@ -1,14 +1,6 @@
 <template>
-  <a-layout-sider :collapsed="collapsed" :trigger="null" collapsible>
+  <a-layout-sider v-model:collapsed="collapsed" collapsible>
     <div class="bar">
-      <a-button
-        type="text"
-        style="color: white; text-align: left; margin-left: 1rem"
-        @click="toggleCollapsed"
-      >
-        <MenuUnfoldOutlined v-if="collapsed" />
-        <MenuFoldOutlined v-else />
-      </a-button>
       <a-menu mode="inline" theme="dark" v-model:selectedKeys="selectedKeys">
         <a-menu-item key="overview">
           <template #icon>
@@ -69,8 +61,6 @@
 <script>
 import { reactive, toRefs } from "vue";
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   GithubOutlined,
   RadarChartOutlined,
   UnorderedListOutlined,
@@ -80,8 +70,6 @@ import {
 } from "@ant-design/icons-vue";
 export default {
   components: {
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
     GithubOutlined,
     RadarChartOutlined,
     UnorderedListOutlined,
@@ -96,12 +84,7 @@ export default {
       collapsed: true,
     });
 
-    const toggleCollapsed = () => {
-      state.collapsed = !state.collapsed;
-      state.openKeys = state.collapsed ? [] : state.preOpenKeys;
-    };
-
-    return { ...toRefs(state), toggleCollapsed };
+    return { ...toRefs(state) };
   },
 };
 </script>

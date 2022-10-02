@@ -1,42 +1,46 @@
 <template>
-  <div class="LoginFrom">
-    <a-form
-      :model="formState"
-      name="login"
-      :label-col="{ style: { width: '5rem' } }"
-      autocomplete="off"
-      @finish="onFinish"
-    >
-      <a-form-item
-        label="用户名"
-        name="username"
-        validateTrigger="blur"
-        :rules="[{ required: true, message: '请输入用户名!' }]"
+  <a-layout-content>
+    <div class="LoginFrom">
+      <a-form
+        :model="formState"
+        name="login"
+        :label-col="{ style: { width: '5rem' } }"
+        autocomplete="off"
+        @finish="onFinish"
       >
-        <a-input v-model:value.trim="formState.username" />
-      </a-form-item>
-
-      <a-form-item
-        label="密码"
-        name="password"
-        validateTrigger="blur"
-        :rules="[{ required: true, message: '请输入密码!' }]"
-      >
-        <a-input-password v-model:value.trim="formState.password" />
-      </a-form-item>
-      <a-form-item class="flex-center">
-        <a-button type="primary" :disabled="disabled" html-type="submit"
-          >登录</a-button
+        <a-form-item
+          label="用户名"
+          name="username"
+          validateTrigger="blur"
+          :rules="[{ required: true, message: '请输入用户名!' }]"
         >
-      </a-form-item>
-    </a-form>
-  </div>
+          <a-input v-model:value.trim="formState.username" />
+        </a-form-item>
+
+        <a-form-item
+          label="密码"
+          name="password"
+          validateTrigger="blur"
+          :rules="[{ required: true, message: '请输入密码!' }]"
+        >
+          <a-input-password v-model:value.trim="formState.password" />
+        </a-form-item>
+        <a-form-item class="flex-center">
+          <a-button type="primary" :disabled="disabled" html-type="submit"
+            >登录</a-button
+          >
+        </a-form-item>
+      </a-form>
+    </div>
+  </a-layout-content>
+  <Footer fcolor="#ffff" bcolor="#001529"></Footer>
 </template>
 <script setup>
 import { userStateStore } from "../stores/state";
 import { reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { notification } from "ant-design-vue";
+import Footer from "@/components/Footer.vue";
 const formState = reactive({
   username: "",
   password: "",

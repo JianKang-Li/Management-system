@@ -1,32 +1,40 @@
 <template>
   <div class="header">
     <div class="logo">极简后台管理系统</div>
-    <a-dropdown v-if="isLogin">
-      <a-badge count="1">
+    <div style="flex: 1 1 0%"></div>
+    <a-space :size="20">
+      <a-badge count="1" dot v-if="isLogin">
+        <bell-outlined
+          class="mousep"
+          style="width: 1rem; height: 1rem; color: #ffff"
+        />
+      </a-badge>
+
+      <a-dropdown v-if="isLogin">
         <a-avatar :size="30" style="cursor: pointer">
           <template #icon>
             {{ state.username.slice(0, 3) }}
           </template>
         </a-avatar>
-      </a-badge>
-      <template #overlay>
-        <a-menu>
-          <a-menu-item>
-            <a-space>
-              <user-outlined />
-              <span>个人中心</span>
-            </a-space>
-          </a-menu-item>
-          <a-divider style="height: 2px; margin: 2px" />
-          <a-menu-item>
-            <a-space>
-              <logout-outlined />
-              <span @click="loginOut">退出登录</span>
-            </a-space>
-          </a-menu-item>
-        </a-menu>
-      </template>
-    </a-dropdown>
+        <template #overlay>
+          <a-menu>
+            <a-menu-item>
+              <a-space>
+                <user-outlined />
+                <span>个人中心</span>
+              </a-space>
+            </a-menu-item>
+            <a-divider style="height: 2px; margin: 2px" />
+            <a-menu-item>
+              <a-space>
+                <logout-outlined />
+                <span @click="loginOut">退出登录</span>
+              </a-space>
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
+    </a-space>
   </div>
 </template>
 
@@ -34,9 +42,13 @@
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { userStateStore } from "@/stores/state";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons-vue";
+import {
+  LogoutOutlined,
+  UserOutlined,
+  BellOutlined,
+} from "@ant-design/icons-vue";
 export default {
-  components: { LogoutOutlined, UserOutlined },
+  components: { LogoutOutlined, UserOutlined, BellOutlined },
   setup() {
     const state = userStateStore();
     const { isLogin } = storeToRefs(state);
@@ -59,7 +71,7 @@ export default {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .logo {
