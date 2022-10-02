@@ -10,6 +10,7 @@
       <a-form-item
         label="用户名"
         name="username"
+        validateTrigger="blur"
         :rules="[{ required: true, message: '请输入用户名!' }]"
       >
         <a-input v-model:value.trim="formState.username" />
@@ -18,6 +19,7 @@
       <a-form-item
         label="密码"
         name="password"
+        validateTrigger="blur"
         :rules="[{ required: true, message: '请输入密码!' }]"
       >
         <a-input-password v-model:value.trim="formState.password" />

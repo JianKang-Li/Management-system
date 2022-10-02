@@ -4,7 +4,7 @@
       <KeyBord title="使用总人数" data="1000" unit="人"></KeyBord>
       <KeyBord title="在线人数" data="100" unit="人"></KeyBord>
       <KeyBord title="下载人数" data="10" unit="人"></KeyBord>
-      <KeyBord title="下载人数" data="10" unit="人"></KeyBord>
+      <KeyBord title="优秀店铺" data="10" unit="人"></KeyBord>
     </div>
     <div id="users" class="chart"></div>
     <div id="distribution" class="chart"></div>
@@ -148,23 +148,6 @@ export default {
 .chart {
   width: 80%;
   height: 70%;
-}
-
-.Charts::-webkit-scrollbar {
-  width: 0.3rem;
-}
-
-/* 滚动槽 */
-.Charts::-webkit-scrollbar-track {
-  border-radius: 1rem;
-  background: #eee;
-}
-
-/* 滚动条滑块 */
-.Charts::-webkit-scrollbar-thumb {
-  width: 0.1rem;
-  border-radius: 10px;
-  background: rgba(136, 136, 136, 0.8);
 }
 
 .bords {

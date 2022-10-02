@@ -1,10 +1,12 @@
+// 登录状态
 import { defineStore } from "pinia";
 
 export const userStateStore = defineStore("state", {
   state: () => {
     return {
       isLogin: false,
-      username: ""
+      username: "",
+      auth: "1"
     }
   },
   actions: {

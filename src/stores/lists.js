@@ -1,3 +1,4 @@
+// todo列表
 import { defineStore } from "pinia";
 
 export const useTodoStore = defineStore("lists", {

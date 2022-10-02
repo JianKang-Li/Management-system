@@ -31,17 +31,36 @@
           <template #icon>
             <unordered-list-outlined />
           </template>
-          <template #title>含子菜单</template>
-          <a-menu-item key="1">Option 1</a-menu-item>
-          <a-menu-item key="2">Option 2</a-menu-item>
-          <a-menu-item key="3">Option 3</a-menu-item>
-          <a-menu-item key="4">Option 4</a-menu-item>
+          <template #title>常用组件</template>
+          <a-menu-item key="1"
+            ><router-link to="/home/step">分步表单</router-link></a-menu-item
+          >
+          <a-menu-item key="2">表格页</a-menu-item>
+        </a-sub-menu>
+
+        <a-sub-menu key="sub2">
+          <template #icon>
+            <user-outlined />
+          </template>
+          <template #title>个人页</template>
+          <a-menu-item key="5"
+            ><router-link to="">个人中心</router-link></a-menu-item
+          >
+          <a-menu-item key="6"
+            ><router-link to="">个人设置</router-link></a-menu-item
+          >
         </a-sub-menu>
         <a-menu-item key="todo"
           ><template #icon>
             <carry-out-outlined />
           </template>
-          <router-link to="/home/todo">Todos</router-link>
+          <router-link to="/home/todo">待办事项</router-link>
+        </a-menu-item>
+        <a-menu-item key="log"
+          ><template #icon>
+            <container-outlined />
+          </template>
+          <router-link to="/home/log">日志填写</router-link>
         </a-menu-item>
       </a-menu>
     </div>
@@ -56,6 +75,8 @@ import {
   RadarChartOutlined,
   UnorderedListOutlined,
   CarryOutOutlined,
+  ContainerOutlined,
+  UserOutlined,
 } from "@ant-design/icons-vue";
 export default {
   components: {
@@ -65,6 +86,8 @@ export default {
     RadarChartOutlined,
     UnorderedListOutlined,
     CarryOutOutlined,
+    ContainerOutlined,
+    UserOutlined,
   },
   setup() {
     const state = reactive({
@@ -87,23 +110,6 @@ export default {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-}
-
-.bar::-webkit-scrollbar {
-  width: 0.3rem;
-}
-
-/* 滚动槽 */
-.bar::-webkit-scrollbar-track {
-  border-radius: 1rem;
-  background: #eee;
-  width: 0.1rem;
-}
-
-/* 滚动条滑块 */
-.bar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: rgba(136, 136, 136, 0.8);
 }
 
 :deep(.ant-anchor-link-title:hover) {
