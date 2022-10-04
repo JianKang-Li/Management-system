@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="chart" v-useresize="Resize"></div>
+  <div :id="id" class="chart" v-resize="Resize"></div>
 </template>
 <script>
 import * as echarts from "echarts";

@@ -13,8 +13,6 @@ import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 
 import Prism from 'prismjs';
 
-import resize from "vue-element-resize-detector";
-
 
 
 import "@/assets/css/normal.css"
@@ -25,7 +23,7 @@ VueMarkdownEditor.use(vuepressTheme, {
 
 const app = createApp(App)
 
-app.directive('useresize', {
+app.directive('resize', {
   mounted(el, binding) {
     // el为绑定的元素，binding为绑定给指令的对象
     let width = "",
@@ -44,8 +42,6 @@ app.directive('useresize', {
     clearInterval(el.__vueSetInterval__);
   }
 })
-
-app.use(resize)
 app.use(createPinia().use(piniaPluginPersist))
 app.use(router)
 app.use(Antd)
