@@ -1,6 +1,6 @@
 <template>
-  <a-layout-content>
-    <div class="LoginFrom">
+  <a-layout style="position: relative">
+    <a-layout-content class="LoginFrom">
       <a-form
         :model="formState"
         name="login"
@@ -31,16 +31,16 @@
           >
         </a-form-item>
       </a-form>
-    </div>
-  </a-layout-content>
-  <Footer fcolor="#ffff" bcolor="#001529"></Footer>
+    </a-layout-content>
+    <Footers fcolor="#ffff" bcolor="#001529"></Footers>
+  </a-layout>
 </template>
 <script setup>
 import { userStateStore } from "../stores/state";
 import { reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { notification } from "ant-design-vue";
-import Footer from "@/components/Footer.vue";
+import Footers from "@/components/Footers.vue";
 const formState = reactive({
   username: "",
   password: "",
@@ -72,6 +72,7 @@ const disabled = computed(() => {
   justify-content: center;
   background: url("../assets/loginBg.png") no-repeat;
   background-size: cover;
+  margin: 0;
 }
 
 .ant-form {

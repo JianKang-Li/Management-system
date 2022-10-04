@@ -201,7 +201,6 @@ export default {
 .step {
   width: 90%;
   height: 100%;
-  max-width: 800px;
 }
 
 .stepGuide {
@@ -232,5 +231,6 @@ export default {
 
 .stepForm {
   width: 80%;
+  max-width: 25rem;
 }
 </style>

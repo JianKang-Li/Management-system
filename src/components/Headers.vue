@@ -21,7 +21,7 @@
             <a-menu-item>
               <a-space>
                 <user-outlined />
-                <span>个人中心</span>
+                <router-link to="/home">管理中心</router-link>
               </a-space>
             </a-menu-item>
             <a-divider style="height: 2px; margin: 2px" />
@@ -72,6 +72,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .logo {

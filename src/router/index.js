@@ -5,6 +5,7 @@ import Overview from "@/views/subViews/Overview.vue"
 const Todo = () => import('@/views/subViews/Todo.vue')
 const Log = () => import('@/views/subViews/Log.vue')
 const Step = () => import('@/views/subViews/module/Step.vue')
+const Table = () => import("@/views/subViews/module/Table.vue")
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -36,6 +37,10 @@ const router = createRouter({
         {
           path: 'step',
           component: Step
+        },
+        {
+          path: 'table',
+          component: Table
         }
       ]
     },

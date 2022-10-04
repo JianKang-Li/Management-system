@@ -1,7 +1,17 @@
 <template>
-  <a-layout-sider v-model:collapsed="collapsed" collapsible>
-    <div class="bar">
-      <a-menu mode="inline" theme="dark" v-model:selectedKeys="selectedKeys">
+  <a-layout-sider
+    :collapsed="collapsed"
+    :trigger="null"
+    collapsible
+    class="side"
+  >
+    <div style="flex: 1 1 0%; overflow: hidden auto">
+      <a-menu
+        mode="inline"
+        theme="light"
+        v-model:selectedKeys="selectedKeys"
+        class="sideMenu"
+      >
         <a-menu-item key="overview">
           <template #icon>
             <radar-chart-outlined />
@@ -27,7 +37,9 @@
           <a-menu-item key="1"
             ><router-link to="/home/step">分步表单</router-link></a-menu-item
           >
-          <a-menu-item key="2">表格页</a-menu-item>
+          <a-menu-item key="2"
+            ><router-link to="/home/table">表格页</router-link></a-menu-item
+          >
         </a-sub-menu>
 
         <a-sub-menu key="sub2">
@@ -56,10 +68,25 @@
         </a-menu-item>
       </a-menu>
     </div>
+
+    <div class="sideLink">
+      <a-button type="link" @click="toggleCollapsed">
+        <MenuUnfoldOutlined v-if="collapsed" />
+        <MenuFoldOutlined v-else />
+      </a-button>
+    </div>
   </a-layout-sider>
+  <a-layout ref="content" class="main">
+    <a-layout-header> </a-layout-header>
+    <a-layout-content class="content">
+      <router-view></router-view>
+      <Footers bcolor="#f0f2f5" fcolor="#000000"></Footers>
+    </a-layout-content>
+  </a-layout>
 </template>
 <script>
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs, ref, onMounted } from "vue";
+import Footers from "@/components/Footers.vue";
 import {
   GithubOutlined,
   RadarChartOutlined,
@@ -67,32 +94,63 @@ import {
   CarryOutOutlined,
   ContainerOutlined,
   UserOutlined,
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
 } from "@ant-design/icons-vue";
 export default {
   components: {
+    Footers,
     GithubOutlined,
     RadarChartOutlined,
     UnorderedListOutlined,
     CarryOutOutlined,
     ContainerOutlined,
     UserOutlined,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
   },
   setup() {
     const state = reactive({
       rootSubmenuKeys: ["sub1"],
       selectedKeys: [],
-      collapsed: true,
+    });
+    const content = ref(null);
+
+    const collapsed = ref(true);
+
+    onMounted(() => {
+      content.value.$el.style["margin-left"] = "calc(80px + 1rem)";
     });
 
-    return { ...toRefs(state) };
+    const toggleCollapsed = () => {
+      collapsed.value = !collapsed.value;
+      if (collapsed.value === false) {
+        content.value.$el.style["margin-left"] = "calc(200px + 1rem)";
+      } else {
+        content.value.$el.style["margin-left"] = "calc(80px + 1rem)";
+      }
+    };
+    return { ...toRefs(state), toggleCollapsed, collapsed, content };
   },
 };
 </script>
 <style scoped>
-.bar {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
+.side {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: calc(100% - 64px);
+  overflow: auto;
+  margin-top: 64px;
+  background: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem 0 0;
 }
 
 :deep(.ant-anchor-link-title:hover) {
@@ -100,8 +158,25 @@ export default {
   display: inline;
 }
 
-.ant-layout-sider {
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+:deep(.ant-layout-sider-children) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sideLink > button {
+  width: 100%;
+  color: #000;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+.sideLink > button:hover {
+  color: #329cff;
+}
+
+.main {
+  transition: all 0.5s ease-in-out;
+  flex: 1;
 }
 </style>

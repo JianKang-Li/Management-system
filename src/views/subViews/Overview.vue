@@ -22,6 +22,7 @@ export default {
       id: "users",
       legend: {
         data: ["浏览人数", "平均购买人数"],
+        right: 0,
       },
       xAxis: {
         type: "category",
@@ -112,7 +113,7 @@ export default {
 
 .chart {
   width: 80%;
-  height: 70%;
+  height: 50vh;
 }
 
 .bords {

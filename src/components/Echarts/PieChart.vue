@@ -1,5 +1,5 @@
 <template>
-  <div :id="pid" class="chart"></div>
+  <div :id="pid" class="chart" v-useresize="Resize"></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -31,21 +31,20 @@ export default {
 
     onMounted(() => {
       drawEchart();
-      window.addEventListener("resize", () => {
-        disChart();
-        drawEchart();
-      });
     });
 
     onBeforeUnmount(() => {
-      removeEventListener("resize", window);
       disChart();
     });
 
     let pid = ref(props.id);
 
+    const Resize = () => {
+      pieChart.resize();
+    };
     return {
       pid,
+      Resize,
     };
   },
 };

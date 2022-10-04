@@ -1,5 +1,5 @@
 <template>
-  <div :id="id" class="chart"></div>
+  <div :id="id" class="chart" v-useresize="Resize"></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -14,6 +14,7 @@ export default {
         title: {
           text: props.title,
           left: "left",
+          top: 0,
         },
         tooltip: {
           trigger: "axis",
@@ -27,6 +28,8 @@ export default {
               type: ["bar", "line"],
             },
           },
+          top: 15,
+          right: 10,
         },
         xAxis: props.xAxis,
         yAxis: props.yAxis,
@@ -41,16 +44,18 @@ export default {
 
     onMounted(() => {
       drawEchart();
-      window.addEventListener("resize", () => {
-        disChart();
-        drawEchart();
-      });
     });
 
     onBeforeUnmount(() => {
-      removeEventListener("resize", window);
       disChart();
     });
+
+    const Resize = () => {
+      barChart.resize();
+    };
+    return {
+      Resize,
+    };
   },
 };
 </script>

@@ -5,6 +5,7 @@
       'background-color': bgcolor,
       color: focolor,
     }"
+    class="footer"
   >
     <span>极简后台 ©2022 Created by ljk</span>
   </a-layout-footer>
@@ -23,3 +24,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.footer {
+  margin-bottom: 0;
+  text-align: center;
+}
+</style>
