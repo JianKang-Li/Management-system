@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 export const useTodoStore = defineStore("lists", {
   state: () => {
     return {
-      lists: [{ id: "1", content: "axios通信", done: false }, { id: "2", content: '增加表单', done: false }, { id: "3", content: '增加表格', done: false }]
+      lists: [{ id: "1", content: "axios通信", done: false }, { id: '2', content: "个人中心", done: false }]
     }
   },
   actions: {
