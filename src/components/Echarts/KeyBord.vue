@@ -1,8 +1,10 @@
 <template>
   <div class="keybord">
-    <h3 class="title">{{ props.title }}</h3>
-    <div class="hr"></div>
-    <span class="data">{{ format(props.data) + props.unit }}</span>
+    <slot>
+      <h3 class="title">{{ props.title }}</h3>
+      <div class="hr"></div>
+      <span class="data">{{ format(props.data) + props.unit }}</span>
+    </slot>
   </div>
 </template>
 <script>
