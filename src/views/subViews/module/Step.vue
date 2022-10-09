@@ -120,6 +120,7 @@ import { ref, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
 import { message } from "ant-design-vue";
 export default {
+  name: "Step",
   setup() {
     const current = ref(0);
     const formState = reactive({

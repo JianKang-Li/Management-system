@@ -15,6 +15,7 @@ import KeyBord from "@/components/Echarts/KeyBord.vue";
 import PieChart from "@/components/Echarts/PieChart.vue";
 import BarChart from "@/components/Echarts/BarChart.vue";
 export default {
+  name: "Overview",
   components: { KeyBord, PieChart, BarChart },
   setup() {
     const barChart = {

@@ -5,6 +5,7 @@
 import * as echarts from "echarts";
 import { onMounted, onBeforeUnmount } from "vue";
 export default {
+  name: "BarChart",
   props: ["id", "title", "series", "xAxis", "yAxis", "legend"],
   setup(props) {
     let barChart;

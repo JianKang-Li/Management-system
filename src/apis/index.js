@@ -11,3 +11,8 @@ export const getTableData = function (current, pageSize) {
   })
 }
 
+export const getCurrentUser = function () {
+  let uri = "/currentUserDetail"
+  return mack1.get(uri)
+}
+

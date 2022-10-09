@@ -12,6 +12,7 @@
 <script>
 import { ref } from "vue";
 export default {
+  name: "Log",
   setup() {
     let text = ref("");
     const toolbar = {

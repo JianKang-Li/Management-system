@@ -5,6 +5,7 @@
 import * as echarts from "echarts";
 import { onMounted, onBeforeUnmount, ref } from "vue";
 export default {
+  name: "PieChart",
   props: ["id", "title", "series"],
   setup(props) {
     let pieChart;

@@ -48,6 +48,7 @@ import {
   BellOutlined,
 } from "@ant-design/icons-vue";
 export default {
+  name: "Headers",
   components: { LogoutOutlined, UserOutlined, BellOutlined },
   setup() {
     const state = userStateStore();

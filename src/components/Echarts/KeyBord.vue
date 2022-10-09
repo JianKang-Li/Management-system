@@ -9,6 +9,7 @@
 </template>
 <script>
 export default {
+  name: "KeyBord",
   props: ["title", "data", "unit"],
   setup(props) {
     const format = (data) => {

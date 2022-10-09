@@ -27,6 +27,7 @@ import { ref } from "vue";
 import { message } from "ant-design-vue";
 import Item from "@/components/Todos/Item.vue";
 export default {
+  name: "Todo",
   components: { Item },
   setup() {
     const TodoStore = useTodoStore();

@@ -30,14 +30,7 @@
         </template>
       </template>
     </a-table>
-    <a-modal
-      v-model:visible="visible"
-      title="详细信息"
-      ok-text="确认"
-      cancel-text="取消"
-      @ok="handleOk"
-      width="70%"
-    >
+    <a-modal v-model:visible="visible" title="详细信息" width="70%">
       <a-descriptions bordered :title="CurrentData.name" size="small">
         <a-descriptions-item label="头像"
           ><a-avatar :size="50" :src="CurrentData.avatar"></a-avatar
@@ -77,6 +70,7 @@ import { ref } from "vue";
 import { getTableData } from "@/apis/index.js";
 import Tag from "@/components/Table/Tag.vue";
 export default {
+  name: "NormalTable",
   components: { Tag },
   setup() {
     let dataSource = ref(null);

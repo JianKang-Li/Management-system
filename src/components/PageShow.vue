@@ -51,7 +51,7 @@
           <template #title>个人页</template>
           <a-menu-item key="5">
             <template #title>个人中心</template>
-            <router-link to="">个人中心</router-link></a-menu-item
+            <router-link to="/home/personal">个人中心</router-link></a-menu-item
           >
           <a-menu-item key="6">
             <template #title>个人设置</template>
@@ -67,6 +67,10 @@
           <a-menu-item key="3">
             <template #title>404</template>
             <router-link to="/error/404">404</router-link></a-menu-item
+          >
+          <a-menu-item key="4">
+            <template #title>500</template>
+            <router-link to="/error/500">500</router-link></a-menu-item
           >
         </a-sub-menu>
 
@@ -115,6 +119,7 @@ import {
   InfoCircleOutlined,
 } from "@ant-design/icons-vue";
 export default {
+  name: "PageShow",
   components: {
     Footers,
     GithubOutlined,

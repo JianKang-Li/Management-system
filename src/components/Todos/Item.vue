@@ -23,6 +23,7 @@ import { ref, watch } from "vue";
 import { useTodoStore } from "@/stores/lists";
 import { message } from "ant-design-vue";
 export default {
+  name: "Item",
   props: ["data"],
   setup(props) {
     const todoStore = useTodoStore();

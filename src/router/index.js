@@ -1,14 +1,16 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue";
 import Overview from "@/views/subViews/Overview.vue"
 const Todo = () => import('@/views/subViews/Todo.vue')
 const Log = () => import('@/views/subViews/Log.vue')
 const Step = () => import('@/views/subViews/module/Step.vue')
-const Table = () => import("@/views/subViews/module/Table.vue")
+const NormalTable = () => import("@/views/subViews/module/NormalTable.vue")
 const NotFound = () => import('@/views/error/404.vue')
+const ServerError = () => import('@/views/error/500.vue')
+const PersonalCenter = () => import('@/views/subViews/personal/PersonalCenter.vue')
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
@@ -25,6 +27,10 @@ const router = createRouter({
         {
           path: '404',
           component: NotFound
+        },
+        {
+          path: '500',
+          component: ServerError,
         }
       ]
     },
@@ -51,7 +57,11 @@ const router = createRouter({
         },
         {
           path: 'table',
-          component: Table
+          component: NormalTable
+        },
+        {
+          path: 'personal',
+          component: PersonalCenter
         },
       ]
     },

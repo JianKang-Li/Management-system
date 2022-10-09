@@ -5,15 +5,16 @@
     <Headers></Headers>
   </a-layout-header>
   <a-layout has-sider>
-    <SideBar></SideBar>
+    <PageShow></PageShow>
   </a-layout>
 </template>
 <script>
-import SideBar from "@/components/SideBar.vue";
+import PageShow from "@/components/PageShow.vue";
 
 import Headers from "@/components/Headers.vue";
 export default {
-  components: { SideBar, Headers },
+  name: "Home",
+  components: { PageShow, Headers },
   setup() {},
 };
 </script>

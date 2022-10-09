@@ -13,6 +13,7 @@
 <script>
 import { ref } from "vue";
 export default {
+  name: "Footers",
   props: ["bcolor", "fcolor"],
   setup(props) {
     const bgcolor = ref(props.bcolor);
