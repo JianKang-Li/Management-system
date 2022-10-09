@@ -31,18 +31,19 @@
     </p>
   </div>
   <a-divider />
+  <span>管辖团队</span>
   <div class="groups">
-    <span>管辖团队</span>
-    <a-row>
-      <a-col v-for="item in notice" :key="item.id">
-        <div class="card">
-          <a-avatar :size="50" :src="item.logo"></a-avatar>
-          <a-divider />
-          <p>{{ item.member }}</p>
-          <span>{{ item.description }}</span>
-        </div>
-      </a-col>
-    </a-row>
+    <div class="card" v-for="item in notice" :key="item.id">
+      <div class="title">
+        <a-avatar :size="40" :src="item.logo"></a-avatar>
+        <span>{{ item.title }}</span>
+      </div>
+      <a-divider />
+      <div class="content">
+        <p>{{ item.member }}</p>
+        <span>{{ item.description }}</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -73,19 +74,30 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 .card {
   padding: 1rem 1rem;
-  width: 15rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   background-color: #fff;
-  margin: 1rem 1rem;
-  transition: all 0.5s ease;
-  transform: perspective(1px);
   cursor: pointer;
+  width: 30%;
+  margin: 0.3rem;
+}
+
+.card .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.groups {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
