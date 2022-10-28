@@ -1,10 +1,20 @@
 <template>
   <div class="table">
+    <a-card :bordered="false" class="OpBar">
+      <a-tooltip placement="right">
+        <template #title v-if="!hasValue">选择数据以导出为xlsx表格</template>
+        <a-button type="primary" @click="exporeFile" :disabled="!hasValue"
+          >导出Excel</a-button
+        >
+      </a-tooltip>
+    </a-card>
+
     <a-table
       :dataSource="dataSource"
       :columns="columns"
       bordered
       :row-selection="rowSelection"
+      :loading="isLoading"
       :scroll="{ y: 550 }"
     >
       <template #bodyCell="{ column, record }">
@@ -38,6 +48,9 @@
         <a-descriptions-item label="编号">{{
           CurrentData.callNo
         }}</a-descriptions-item>
+        <a-descriptions-item label="会员号">{{
+          CurrentData.key
+        }}</a-descriptions-item>
         <a-descriptions-item label="描述">{{
           CurrentData.desc
         }}</a-descriptions-item>
@@ -66,24 +79,33 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import { getTableData } from "@/apis/index.js";
 import Tag from "@/components/Table/Tag.vue";
+import { utils, writeFile } from "xlsx";
 export default {
   name: "NormalTable",
   components: { Tag },
   setup() {
     let dataSource = ref(null);
+    let isLoading = ref(true);
+    const state = reactive({
+      selectedRows: [],
+    });
+    const hasValue = ref(false);
 
-    getTableData(1, 20).then(
-      (res) => {
-        // console.log(res.data);
-        dataSource.value = res.data;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    onMounted(() => {
+      getTableData(1, 20).then(
+        (res) => {
+          dataSource.value = res.data;
+          return res.data;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      isLoading.value = false;
+    });
 
     const columns = [
       {
@@ -118,19 +140,11 @@ export default {
     ];
 
     const rowSelection = ref({
-      checkStrictly: false,
-      onChange: (selectedRowKeys, selectedRows) => {
-        console.log(
-          `selectedRowKeys: ${selectedRowKeys}`,
-          "selectedRows: ",
-          selectedRows
-        );
-      },
-      onSelect: (record, selected, selectedRows) => {
-        console.log(record, selected, selectedRows);
-      },
-      onSelectAll: (selected, selectedRows, changeRows) => {
-        console.log(selected, selectedRows, changeRows);
+      onChange: (_, selectedRows) => {
+        state.selectedRows = selectedRows;
+        state.selectedRows.length === 0
+          ? (hasValue.value = false)
+          : (hasValue.value = true);
       },
     });
 
@@ -146,6 +160,26 @@ export default {
       setData(data);
     };
 
+    const exporeFile = () => {
+      let json = [];
+      state.selectedRows.forEach((item) => {
+        let person = {
+          会员号: item.key,
+          姓名: item.name,
+          自我描述: item.desc,
+          编号: item.callNo,
+          升级进度: item.progress,
+          账号更新日期: item.updatedAt,
+          会员创建日期: item.createdAt,
+        };
+        json.push(person);
+      });
+      let ws = utils.json_to_sheet(json);
+      let wb = utils.book_new();
+      utils.book_append_sheet(wb, ws, "会员信息");
+      writeFile(wb, "会员信息表.xlsx");
+    };
+
     return {
       columns,
       dataSource,
@@ -153,6 +187,10 @@ export default {
       showModal,
       visible,
       CurrentData,
+      isLoading,
+      exporeFile,
+      state,
+      hasValue,
     };
   },
 };
@@ -160,5 +198,10 @@ export default {
 <style scoped>
 .table {
   width: 100%;
+  position: relative;
+}
+
+.OpBar {
+  margin-bottom: 1rem;
 }
 </style>
