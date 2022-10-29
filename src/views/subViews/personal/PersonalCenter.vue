@@ -1,16 +1,21 @@
 <template>
   <a-card :loading="loading" title="个人信息" class="Personal">
     <template #extra>
-      <a-tooltip>
-        <template #title
-          >数据来源于<a
-            class="tip"
-            href="https://preview.pro.ant.design/dashboard/analysis"
-            >ant-design</a
-          ></template
+      <a-space>
+        <a-tooltip>
+          <template #title
+            >数据来源于<a
+              class="tip"
+              href="https://preview.pro.ant.design/dashboard/analysis"
+              >ant-design</a
+            >
+          </template>
+          <question-circle-outlined />
+        </a-tooltip>
+        <a-button type="primary" @click="downPDF('.Personal')" class="noPrint"
+          >导出PDF</a-button
         >
-        <question-circle-outlined />
-      </a-tooltip>
+      </a-space>
     </template>
 
     <PersonalCard :data="user"></PersonalCard>
@@ -57,9 +62,41 @@ export default {
       }
     );
 
+    function downPDF(container) {
+      const style = document.createElement("style");
+      style.innerHTML = `@media print {
+      @page {
+        margin: 0;
+      }
+
+      body {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body> :not(${container}) {
+        display: none;
+      }
+
+      .noPrint{
+        display:none
+      }
+    }`;
+
+      const div = document.querySelector(container);
+      let old = document.body.innerHTML;
+      document.body.innerHTML = "";
+      document.body.appendChild(style);
+      document.body.appendChild(div);
+      window.print();
+      document.body.innerHTML = old;
+    }
+
     return {
       loading,
       user,
+      downPDF,
     };
   },
 };
