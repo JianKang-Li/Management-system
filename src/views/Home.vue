@@ -4,9 +4,8 @@
   >
     <Headers></Headers>
   </a-layout-header>
-  <a-layout has-sider>
-    <PageShow></PageShow>
-  </a-layout>
+
+  <PageShow></PageShow>
 </template>
 <script>
 import PageShow from "@/components/PageShow.vue";

@@ -1,142 +1,28 @@
 <template>
-  <a-layout-sider
-    :collapsed="collapsed"
-    :trigger="null"
-    collapsible
-    class="side"
-  >
-    <div style="flex: 1 1 0%; overflow: hidden auto">
-      <a-menu
-        mode="inline"
-        theme="light"
-        v-model:selectedKeys="selectedKeys"
-        class="sideMenu"
-      >
-        <a-menu-item key="overview">
-          <template #icon>
-            <radar-chart-outlined />
-          </template>
-          <router-link to="/home/overview">情况总览</router-link>
-        </a-menu-item>
-        <a-menu-item key="github">
-          <template #icon>
-            <github-outlined />
-          </template>
-          <a
-            href="https://github.com/JianKang-Li/Management-system"
-            target="_blank"
-          >
-            GitHub首页
-          </a>
-        </a-menu-item>
-        <a-sub-menu key="sub1">
-          <template #icon>
-            <unordered-list-outlined />
-          </template>
-          <template #title>常用组件</template>
-          <a-menu-item key="1">
-            <template #title>分布表单</template>
-            <router-link to="/home/step">分步表单</router-link></a-menu-item
-          >
-          <a-menu-item key="2">
-            <template #title>表格页</template>
-            <router-link to="/home/table">表格页</router-link></a-menu-item
-          >
-        </a-sub-menu>
-
-        <a-sub-menu key="sub2">
-          <template #icon>
-            <user-outlined />
-          </template>
-          <template #title>个人页</template>
-          <a-menu-item key="5">
-            <template #title>个人中心</template>
-            <router-link to="/home/personal">个人中心</router-link></a-menu-item
-          >
-          <a-menu-item key="6">
-            <template #title>个人设置</template>
-            <router-link to="">个人设置</router-link></a-menu-item
-          >
-        </a-sub-menu>
-
-        <a-sub-menu key="sub3">
-          <template #icon>
-            <info-circle-outlined />
-          </template>
-          <template #title>错误页</template>
-          <a-menu-item key="3">
-            <template #title>404</template>
-            <router-link to="/error/404">404</router-link></a-menu-item
-          >
-          <a-menu-item key="4">
-            <template #title>500</template>
-            <router-link to="/error/500">500</router-link></a-menu-item
-          >
-        </a-sub-menu>
-
-        <a-menu-item key="todo"
-          ><template #icon>
-            <carry-out-outlined />
-          </template>
-          <router-link to="/home/todo">待办事项</router-link>
-        </a-menu-item>
-        <a-menu-item key="log"
-          ><template #icon>
-            <container-outlined />
-          </template>
-          <router-link to="/home/log">日志填写</router-link>
-        </a-menu-item>
-      </a-menu>
-    </div>
-
-    <div class="sideLink">
-      <a-button type="link" @click="toggleCollapsed">
-        <MenuUnfoldOutlined v-if="collapsed" />
-        <MenuFoldOutlined v-else />
-      </a-button>
-    </div>
-  </a-layout-sider>
-  <a-layout ref="content" class="main">
-    <a-layout-header> </a-layout-header>
-    <a-layout-content class="content">
-      <router-view></router-view>
-      <Footers bcolor="#f0f2f5" fcolor="#000000"></Footers>
-    </a-layout-content>
+  <a-layout has-sider>
+    <SiderBar @coll="toggleCollapsed"></SiderBar>
+    <a-layout ref="content" class="main">
+      <a-layout-header> </a-layout-header>
+      <a-layout-content class="content">
+        <router-view></router-view>
+        <Footers bcolor="#f0f2f5" fcolor="#000000"></Footers>
+      </a-layout-content>
+    </a-layout>
   </a-layout>
 </template>
 <script>
-import { reactive, toRefs, ref, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import Footers from "@/components/Footers.vue";
-import {
-  GithubOutlined,
-  RadarChartOutlined,
-  UnorderedListOutlined,
-  CarryOutOutlined,
-  ContainerOutlined,
-  UserOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  InfoCircleOutlined,
-} from "@ant-design/icons-vue";
+import SiderBar from "./SiderBar.vue";
+
 export default {
   name: "PageShow",
   components: {
     Footers,
-    GithubOutlined,
-    RadarChartOutlined,
-    UnorderedListOutlined,
-    CarryOutOutlined,
-    ContainerOutlined,
-    UserOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    InfoCircleOutlined,
+    SiderBar,
   },
+
   setup() {
-    const state = reactive({
-      rootSubmenuKeys: ["sub1"],
-      selectedKeys: [],
-    });
     const content = ref(null);
 
     const collapsed = ref(true);
@@ -153,7 +39,11 @@ export default {
         content.value.$el.style["margin-left"] = "calc(80px + 1rem)";
       }
     };
-    return { ...toRefs(state), toggleCollapsed, collapsed, content };
+    return {
+      toggleCollapsed,
+      collapsed,
+      content,
+    };
   },
 };
 </script>

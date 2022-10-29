@@ -61,7 +61,7 @@ export default {
   components: { HomeOutlined, TeamOutlined, Career, PhoneOutlined, Email },
   setup(props) {
     // console.log(props.data);
-    console.dir(props.data);
+    // console.dir(props.data);
     return {
       ...toRefs(props.data),
     };

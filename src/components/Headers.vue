@@ -3,12 +3,25 @@
     <div class="logo">极简后台管理系统</div>
     <div style="flex: 1 1 0%"></div>
     <a-space :size="20">
-      <a-badge count="1" dot v-if="isLogin">
-        <bell-outlined
-          class="mousep"
-          style="width: 1rem; height: 1rem; color: #ffff"
-        />
-      </a-badge>
+      <a-dropdown :trigger="['click']">
+        <a-badge count="1" dot v-if="isLogin">
+          <bell-outlined
+            class="mousep"
+            :style="{
+              fontSize: '20px',
+              color: '#fff',
+              verticalAlign: 'middle',
+            }"
+          />
+        </a-badge>
+        <template #overlay>
+          <a-menu>
+            <a-menu-item v-for="(item, index) in messages" :key="index">
+              {{ item.title }}
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
 
       <a-dropdown v-if="isLogin">
         <a-avatar :size="30" style="cursor: pointer">
@@ -39,6 +52,7 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import { userStateStore } from "@/stores/state";
@@ -58,10 +72,29 @@ export default {
       state.clear();
       router.push("/Login");
     };
+
+    const activeKey = ref("1");
+
+    const messages = [
+      {
+        title: "你有一条来自好友的消息",
+      },
+      {
+        title: "你有一条来自好友的消息",
+      },
+      {
+        title: "你有一条来自好友的消息",
+      },
+      {
+        title: "你有一条来自好友的消息",
+      },
+    ];
     return {
       loginOut,
       isLogin,
       state,
+      activeKey,
+      messages,
     };
   },
 };
@@ -83,5 +116,20 @@ export default {
 
 .link {
   color: #000;
+}
+
+.tabs {
+  position: absolute;
+  right: 10%;
+  height: 50vh;
+  top: 70px;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  width: 20rem;
+  overflow: auto;
+  box-shadow: 3px 3px 10px #011;
+  display: flex;
+  flex-direction: column;
+  /* display: none; */
 }
 </style>
