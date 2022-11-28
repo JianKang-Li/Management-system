@@ -18,17 +18,6 @@
           </template>
           <router-link to="/home/overview">情况总览</router-link>
         </a-menu-item>
-        <a-menu-item key="github">
-          <template #icon>
-            <github-outlined />
-          </template>
-          <a
-            href="https://github.com/JianKang-Li/Management-system"
-            target="_blank"
-          >
-            GitHub首页
-          </a>
-        </a-menu-item>
         <a-sub-menu key="sub1">
           <template #icon>
             <unordered-list-outlined />
@@ -116,6 +105,17 @@
             <container-outlined />
           </template>
           <router-link to="/home/log">日志填写</router-link>
+        </a-menu-item>
+        <a-menu-item key="github">
+          <template #icon>
+            <github-outlined />
+          </template>
+          <a
+            href="https://github.com/JianKang-Li/Management-system"
+            target="_blank"
+          >
+            GitHub首页
+          </a>
         </a-menu-item>
       </a-menu>
     </div>
