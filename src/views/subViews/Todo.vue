@@ -67,13 +67,13 @@ export default {
 }
 
 .input {
-  width: 60%;
+  width: 500px;
   height: 2.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 
 .lists {
-  width: 60%;
+  width: 500px;
 }
 </style>

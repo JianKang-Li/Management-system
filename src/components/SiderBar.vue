@@ -33,7 +33,7 @@
           <template #icon>
             <unordered-list-outlined />
           </template>
-          <template #title>常用组件</template>
+          <template #title>常用表单</template>
           <a-menu-item key="1">
             <template #title>分布表单</template>
             <router-link to="/home/step">分步表单</router-link></a-menu-item
@@ -71,6 +71,37 @@
           <a-menu-item key="4">
             <template #title>500</template>
             <router-link to="/error/500">500</router-link></a-menu-item
+          >
+        </a-sub-menu>
+
+        <a-sub-menu key="sub4">
+          <template #icon>
+            <unordered-list-outlined />
+          </template>
+          <template #title>常用组件</template>
+          <a-menu-item key="5">
+            <template #title>剪切板</template>
+            <router-link to="/home/components/clip"
+              >剪切板</router-link
+            ></a-menu-item
+          >
+          <a-menu-item key="6">
+            <template #title>图片放大镜</template>
+            <router-link to="/home/components/magnifier"
+              >图片放大镜</router-link
+            ></a-menu-item
+          >
+          <a-menu-item key="7">
+            <template #title>二维码</template>
+            <router-link to="/home/components/qrcode"
+              >二维码</router-link
+            ></a-menu-item
+          >
+          <a-menu-item key="8">
+            <template #title>视频播放器</template>
+            <router-link to="/home/components/player"
+              >视频播放器</router-link
+            ></a-menu-item
           >
         </a-sub-menu>
 

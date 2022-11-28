@@ -60,7 +60,6 @@ export default {
 <style scoped>
 .item {
   width: 100%;
-  max-width: 100%;
   height: 3rem;
   padding: 0.1rem 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);

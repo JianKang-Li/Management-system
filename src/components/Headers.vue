@@ -34,7 +34,9 @@
             <a-menu-item>
               <a-space>
                 <user-outlined />
-                <router-link to="/home" class="link">管理中心</router-link>
+                <router-link to="/home/personal" class="link"
+                  >管理中心</router-link
+                >
               </a-space>
             </a-menu-item>
             <a-divider style="height: 2px; margin: 2px" />
