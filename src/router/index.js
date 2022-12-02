@@ -9,6 +9,10 @@ const NormalTable = () => import("@/views/subViews/Tables/NormalTable.vue")
 const NotFound = () => import('@/views/error/404.vue')
 const ServerError = () => import('@/views/error/500.vue')
 const PersonalCenter = () => import('@/views/subViews/personal/PersonalCenter.vue')
+const Clip = () => import('@/views/subViews/components/Clip/index.vue')
+const Qrcode = () => import('@/views/subViews/components/Qrcode/index.vue')
+const Magnifier = () => import('@/views/subViews/components/Magnifier/index.vue')
+const Player = () => import('@/views/subViews/components/videoPlayer/index.vue')
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -63,6 +67,28 @@ const router = createRouter({
           path: 'personal',
           component: PersonalCenter
         },
+        {
+          path: "components",
+          redirect: "/components/clip",
+          children: [
+            {
+              path: "clip",
+              component: Clip
+            },
+            {
+              path: "qrcode",
+              component: Qrcode
+            },
+            {
+              path: "magnifier",
+              component: Magnifier
+            },
+            {
+              path: "player",
+              component: Player
+            }
+          ]
+        }
       ]
     },
   ],
