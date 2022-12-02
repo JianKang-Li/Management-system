@@ -1,18 +1,19 @@
 <template>
   <div class="container">
+    <h1>生成二维码</h1>
     <a-space>
       <a-input type="text" v-model:value="qrtext" />
-      <a-button type="primary" @click="generate">生成二维码</a-button>
+      <a-button type="primary" @click="generate">生成</a-button>
     </a-space>
     <div id="show"></div>
   </div>
 </template>
 <script>
 import QRCode from "qrcodejs2-fix";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 export default {
   setup() {
-    const qrtext = ref("二维码");
+    const qrtext = ref("https://github.com/JianKang-Li/Management-system");
 
     const generate = () => {
       const show = document.querySelector("#show");
@@ -25,9 +26,11 @@ export default {
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H,
       });
-      // qrcode.makeCode();
-      // console.log(qrcode);
     };
+
+    onMounted(() => {
+      generate();
+    });
     return {
       qrtext,
       generate,

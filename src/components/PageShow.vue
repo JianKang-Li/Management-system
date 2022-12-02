@@ -6,6 +6,7 @@
       <a-layout-content class="content">
         <router-view></router-view>
         <Footers bcolor="#f0f2f5" fcolor="#000000"></Footers>
+        <a-back-top :visibilityHeight="100" />
       </a-layout-content>
     </a-layout>
   </a-layout>
@@ -91,5 +92,10 @@ export default {
 .main {
   transition: all 0.5s ease-in-out;
   flex: 1;
+}
+
+.ant-back-top {
+  bottom: 40px;
+  right: 1.5rem;
 }
 </style>
