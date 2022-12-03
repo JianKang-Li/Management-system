@@ -13,7 +13,7 @@
 import { ref } from "vue";
 import { message } from "ant-design-vue";
 export default {
-  name: "clip",
+  name: "Clip",
   setup() {
     const clipText = ref("这是复制内容");
 

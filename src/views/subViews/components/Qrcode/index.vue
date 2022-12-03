@@ -12,6 +12,7 @@
 import QRCode from "qrcodejs2-fix";
 import { ref, onMounted } from "vue";
 export default {
+  name: "Qrcode",
   setup() {
     const qrtext = ref("https://github.com/JianKang-Li/Management-system");
 

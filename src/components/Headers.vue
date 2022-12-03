@@ -3,7 +3,7 @@
     <div class="logo">极简后台管理系统</div>
     <div style="flex: 1 1 0%"></div>
     <a-space :size="20">
-      <a-dropdown :trigger="['click']">
+      <a-dropdown :trigger="['hover']">
         <a-badge count="1" dot v-if="isLogin">
           <bell-outlined
             class="mousep"
@@ -79,16 +79,13 @@ export default {
 
     const messages = [
       {
-        title: "你有一条来自好友的消息",
+        title: "这是个人消息提示",
       },
       {
-        title: "你有一条来自好友的消息",
+        title: "这是消息提示",
       },
       {
-        title: "你有一条来自好友的消息",
-      },
-      {
-        title: "你有一条来自好友的消息",
+        title: "这是消息提示",
       },
     ];
     return {
