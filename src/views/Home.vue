@@ -8,7 +8,7 @@
   <PageShow></PageShow>
 </template>
 <script>
-import PageShow from "@/components/PageShow.vue";
+import PageShow from "./PageShow.vue";
 
 import Headers from "@/components/Headers.vue";
 export default {

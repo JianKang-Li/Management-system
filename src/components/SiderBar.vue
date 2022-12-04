@@ -14,7 +14,7 @@
       >
         <a-menu-item key="overview">
           <template #icon>
-            <radar-chart-outlined />
+            <appstore-outlined />
           </template>
           <router-link to="/home/overview">情况总览</router-link>
         </a-menu-item>
@@ -65,7 +65,7 @@
 
         <a-sub-menu key="sub4">
           <template #icon>
-            <unordered-list-outlined />
+            <appstore-add-outlined />
           </template>
           <template #title>常用组件</template>
           <a-menu-item key="7">
@@ -90,6 +90,12 @@
             <template #title>视频播放器</template>
             <router-link to="/home/components/player"
               >视频播放器</router-link
+            ></a-menu-item
+          >
+          <a-menu-item key="11">
+            <template #title>时间轴</template>
+            <router-link to="/home/components/timeline"
+              >时间轴</router-link
             ></a-menu-item
           >
         </a-sub-menu>
@@ -132,7 +138,7 @@
 import { reactive, toRefs, ref } from "vue";
 import {
   GithubOutlined,
-  RadarChartOutlined,
+  AppstoreOutlined,
   UnorderedListOutlined,
   CarryOutOutlined,
   ContainerOutlined,
@@ -140,11 +146,12 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   InfoCircleOutlined,
+  AppstoreAddOutlined,
 } from "@ant-design/icons-vue";
 export default {
   components: {
     GithubOutlined,
-    RadarChartOutlined,
+    AppstoreOutlined,
     UnorderedListOutlined,
     CarryOutOutlined,
     ContainerOutlined,
@@ -152,6 +159,7 @@ export default {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     InfoCircleOutlined,
+    AppstoreAddOutlined,
   },
   setup(_, { emit }) {
     const state = reactive({

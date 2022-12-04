@@ -45,3 +45,10 @@ body {
   margin-top: 1rem;
   text-align: center;
 }
+
+.hr {
+  width: 90%;
+  height: 0.1rem;
+  background-color: #eee;
+  margin: 0 0 0.5rem 0;
+}

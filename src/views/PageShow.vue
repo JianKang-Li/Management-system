@@ -4,7 +4,11 @@
     <a-layout ref="content" class="main">
       <a-layout-header> </a-layout-header>
       <a-layout-content class="content">
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+          <keep-alive>
+            <component :is="Component"></component>
+          </keep-alive>
+        </router-view>
         <Footers bcolor="#f0f2f5" fcolor="#000000"></Footers>
         <a-back-top :visibilityHeight="100" />
       </a-layout-content>
@@ -14,7 +18,7 @@
 <script>
 import { ref, onMounted } from "vue";
 import Footers from "@/components/Footers.vue";
-import SiderBar from "./SiderBar.vue";
+import SiderBar from "../components/SiderBar.vue";
 
 export default {
   name: "PageShow",

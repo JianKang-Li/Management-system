@@ -13,6 +13,7 @@ const Clip = () => import('@/views/subViews/components/Clip/index.vue')
 const Qrcode = () => import('@/views/subViews/components/Qrcode/index.vue')
 const Magnifier = () => import('@/views/subViews/components/Magnifier/index.vue')
 const Player = () => import('@/views/subViews/components/videoPlayer/index.vue')
+const TimeLine = () => import('@/views/subViews/components/Timeline/index.vue')
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -86,6 +87,10 @@ const router = createRouter({
             {
               path: "player",
               component: Player
+            },
+            {
+              path: "timeline",
+              component: TimeLine
             },
           ]
         }

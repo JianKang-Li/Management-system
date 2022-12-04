@@ -64,7 +64,7 @@ img {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  border: 5px solid #fff;
+  border: 2px solid #fff;
   overflow: hidden;
   position: absolute;
   left: 0;

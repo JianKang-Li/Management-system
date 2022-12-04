@@ -1,5 +1,12 @@
 <template>
   <div class="Charts">
+    <div>
+      <KeyBord title="活动倒计时"
+        ><template v-slot:content>
+          <Countdown />
+        </template>
+      </KeyBord>
+    </div>
     <div class="bords">
       <KeyBord title="店铺总浏览人数" data="1000" unit="人"></KeyBord>
       <KeyBord title="日均浏览人数" data="100" unit="人"></KeyBord>
@@ -14,9 +21,10 @@
 import KeyBord from "@/components/Echarts/KeyBord.vue";
 import PieChart from "@/components/Echarts/PieChart.vue";
 import BarChart from "@/components/Echarts/BarChart.vue";
+import Countdown from "@/components/Echarts/Countdown.vue";
 export default {
   name: "Overview",
-  components: { KeyBord, PieChart, BarChart },
+  components: { KeyBord, PieChart, BarChart, Countdown },
   setup() {
     const barChart = {
       title: "每日人流量情况",
