@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <img src="@/assets/Error Alien Spaceship.svg" alt="404" id="img" />
+    <img src="@/assets/404.svg" alt="404" id="img" />
     <a-button type="primary"
       ><router-link to="/home">回到首页</router-link></a-button
     >
