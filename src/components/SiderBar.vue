@@ -31,6 +31,10 @@
             <template #title>表格页</template>
             <router-link to="/home/table">表格页</router-link></a-menu-item
           >
+          <a-menu-item key="3">
+            <template #title>Excel</template>
+            <router-link to="/home/excel">Excel</router-link></a-menu-item
+          >
         </a-sub-menu>
 
         <a-sub-menu key="sub2">
@@ -38,11 +42,11 @@
             <user-outlined />
           </template>
           <template #title>个人页</template>
-          <a-menu-item key="3">
+          <a-menu-item key="4">
             <template #title>个人中心</template>
             <router-link to="/home/personal">个人中心</router-link></a-menu-item
           >
-          <a-menu-item key="4">
+          <a-menu-item key="5">
             <template #title>个人设置</template>
             <router-link to="">个人设置</router-link></a-menu-item
           >
@@ -53,11 +57,11 @@
             <info-circle-outlined />
           </template>
           <template #title>错误页</template>
-          <a-menu-item key="5">
+          <a-menu-item key="6">
             <template #title>404</template>
             <router-link to="/error/404">404</router-link></a-menu-item
           >
-          <a-menu-item key="6">
+          <a-menu-item key="7">
             <template #title>500</template>
             <router-link to="/error/500">500</router-link></a-menu-item
           >
@@ -68,34 +72,34 @@
             <appstore-add-outlined />
           </template>
           <template #title>常用组件</template>
-          <a-menu-item key="7">
+          <a-menu-item key="8">
             <template #title>剪切板</template>
             <router-link to="/home/components/clip"
               >剪切板</router-link
             ></a-menu-item
           >
-          <a-menu-item key="8">
+          <a-menu-item key="9">
             <template #title>图片放大镜</template>
             <router-link to="/home/components/magnifier"
               >图片放大镜</router-link
             ></a-menu-item
           >
-          <a-menu-item key="9">
+          <a-menu-item key="10">
             <template #title>二维码</template>
             <router-link to="/home/components/qrcode"
               >二维码</router-link
-            ></a-menu-item
-          >
-          <a-menu-item key="10">
-            <template #title>视频播放器</template>
-            <router-link to="/home/components/player"
-              >视频播放器</router-link
             ></a-menu-item
           >
           <a-menu-item key="11">
             <template #title>时间轴</template>
             <router-link to="/home/components/timeline"
               >时间轴</router-link
+            ></a-menu-item
+          >
+          <a-menu-item key="12">
+            <template #title>视频播放器</template>
+            <router-link to="/home/components/player"
+              >视频播放器</router-link
             ></a-menu-item
           >
         </a-sub-menu>

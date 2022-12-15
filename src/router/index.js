@@ -6,6 +6,7 @@ const Todo = () => import('@/views/subViews/Todo.vue')
 const Log = () => import('@/views/subViews/Log.vue')
 const Step = () => import('@/views/subViews/Tables/Step.vue')
 const NormalTable = () => import("@/views/subViews/Tables/NormalTable.vue")
+const Excel = () => import('@/views/subViews/Tables/Excel.vue')
 const NotFound = () => import('@/views/error/404.vue')
 const ServerError = () => import('@/views/error/500.vue')
 const PersonalCenter = () => import('@/views/subViews/personal/PersonalCenter.vue')
@@ -59,6 +60,11 @@ const router = createRouter({
         {
           path: 'step',
           component: Step
+        },
+        {
+
+          path: 'excel',
+          component: Excel
         },
         {
           path: 'table',
