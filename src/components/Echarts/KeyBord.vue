@@ -26,7 +26,7 @@ export default {
 <style scoped>
 .keybord {
   margin-top: 1rem;
-  min-width: 20rem;
+  min-width: 18rem;
   height: fit-content;
   padding: 1rem 0.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);

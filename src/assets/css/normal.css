@@ -8,22 +8,22 @@ body {
   height: 100%;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0.2rem;
 }
 
-/* 滚动槽 */
+
 ::-webkit-scrollbar-track {
   border-radius: 1rem;
   background: #eee;
 }
 
-/* 滚动条滑块 */
+
 ::-webkit-scrollbar-thumb {
   width: 0.1rem;
   border-radius: 10px;
   background: rgba(136, 136, 136, 0.8);
-}
+} */
 
 .mousep {
   cursor: pointer;
