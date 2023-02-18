@@ -5,7 +5,6 @@
         :file-list="fileList"
         :before-upload="beforeUpload"
         @remove="handleRemove"
-        :maxCount="1"
         accept=".xls,.xlsx,.csv"
       >
         <a-button>
@@ -79,7 +78,7 @@ export default {
 
     const beforeUpload = (file) => {
       message.info("解析文件中");
-      fileList.value = [...fileList.value, file];
+      fileList.value = [file];
       let reader = new FileReader();
       reader.readAsArrayBuffer(file);
       reader.onload = function (e) {
