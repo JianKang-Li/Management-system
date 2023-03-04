@@ -1,9 +1,10 @@
 export function rendVideo(file) {
   return new Promise((resolve) => {
     let render = new FileReader()
-    render.readAsDataURL(file)
+    render.readAsArrayBuffer(file)
     render.onload = (e) => {
-      resolve(e.target.result)
+      let blob = new Blob([e.target.result])
+      resolve(URL.createObjectURL(blob))
     }
   })
 }
